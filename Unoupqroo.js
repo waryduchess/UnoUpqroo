@@ -36,4 +36,21 @@ deck.push({color: null,number:"CC", type:"Comodin"});
 //console.log(JSON.stringify(deck));
 
 const players = rl.question("cuantos jugadores seran?",{})
-console.log(players);          // npm i  <modulo>  o npm install <modulo> sirve para iniziaclizar un proyecto de node 
+const totalCards = players * 7;
+//repartir 7 cartas por jugador 
+// recorro al total de tarjetas (total de tarjetas por jugador = tarjetas/7 * jugador)
+//arreglo por cada jugador 
+var cardsPlayers ={};
+
+for(var cTCards = 0; cTCards < 7; cTCards++){
+    for(var cPlayers = 0; cPlayers < players;cPlayers++){
+        if(!cardsPlayers["player"+cPlayers]){
+        cardsPlayers["player"+cPlayers] = [];
+        }
+       // console.log("players:", cPlayers);
+        cardsPlayers["player"+cPlayers].push(deck[cTCards]);
+        //console.log(cardsPlayers)
+    }
+}
+console.log(cardsPlayers)
+// npm i  <modulo>  o npm install <modulo> sirve para iniziaclizar un proyecto de node
