@@ -6,7 +6,7 @@ var type = ["Comun","Especial","Comodin"];
 var card = {
     color: null, // el color puede ser amarillo, azul, verde y rojo
     number: null,  // del 0 al 9
-    tipe: null // comun, especial y comodin
+    type: null // comun, especial y comodin
 };
 
 for (var cColor = 0; cColor < Colors.length; cColor++ ){
@@ -33,7 +33,7 @@ deck.push({color: null,number:"CC", type:"Comodin"});
 deck.push({color: null,number:"CC", type:"Comodin"});
 deck.push({color: null,number:"CC", type:"Comodin"});
 
-//console.log(JSON.stringify(deck));
+console.log(JSON.stringify(deck));
 
 const players = rl.question("cuantos jugadores seran?",{})
 const totalCards = players * 7;
@@ -47,10 +47,32 @@ for(var cTCards = 0; cTCards < 7; cTCards++){
         if(!cardsPlayers["player"+cPlayers]){
         cardsPlayers["player"+cPlayers] = [];
         }
-       // console.log("players:", cPlayers);
-        cardsPlayers["player"+cPlayers].push(deck[cTCards]);
-        //console.log(cardsPlayers)
+      // console.log("players:", cPlayers);
+        cardsPlayers["player"+cPlayers].push(deck.shift());
+       //console.log(cardsPlayers)
     }
 }
-console.log(cardsPlayers)
+//console.log(cardsPlayers)
 // npm i  <modulo>  o npm install <modulo> sirve para iniziaclizar un proyecto de node
+// la mesa es el arreglo
+var trash = [];
+
+trash.push(deck.shift());
+
+console.log(trash);
+function cardValidation(cardsPlayers) {
+    // Obtener la primera carta de trash
+    var firstTrashCard = trash[0];
+
+    // Comparar el color y el número de las cartas
+    if (cardsPlayers.color === firstTrashCard.color) {
+        console.log("es igual");
+    } else if (cardsPlayers.number === firstTrashCard.number) {
+        console.log("es igual");
+    } else {
+        console.log("no es igual");
+    }
+}
+console.log();
+
+cardValidation(cardsPlayers);
